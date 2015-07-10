@@ -24,23 +24,23 @@ main
   top 0
   h1, h2
     margin 0
-    span
-      &::selection
-        background-color negro_transparente
-        color red
+  h1 span, h2
+    &::selection
+      background-color negro_transparente
+      color red
   h1
     font-family Dosis, sans-serif
-    font-size 4em
+    font-size 4rem
     span
       &:nth-child(2)
         color brown
+        font-size 5.5rem
   h2
     font-family 'Pinyon Script', serif
-    font-size 3em
-    span
-      transition all 500ms
-      &:hover
-        color red
+    font-size 3rem
+    transition all 500ms
+    &:hover
+      color brown
 
 .wrapper
   overflow hidden

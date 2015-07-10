@@ -39,30 +39,29 @@ main h2 {
   margin: 0;
 }
 main h1 span::selection,
-main h2 span::selection {
+main h2::selection {
   background-color: rgba(0,0,0,0.5);
   color: #f00;
 }
 main h1 {
   font-family: Dosis, sans-serif;
-  font-size: 4em;
+  font-size: 4rem;
 }
 main h1 span:nth-child(2) {
   color: #a52a2a;
+  font-size: 5.5rem;
 }
 main h2 {
   font-family: 'Pinyon Script', serif;
-  font-size: 3em;
-}
-main h2 span {
+  font-size: 3rem;
   -webkit-transition: all 500ms;
   -moz-transition: all 500ms;
   -o-transition: all 500ms;
   -ms-transition: all 500ms;
   transition: all 500ms;
 }
-main h2 span:hover {
-  color: #f00;
+main h2:hover {
+  color: #a52a2a;
 }
 .wrapper {
   overflow: hidden;
