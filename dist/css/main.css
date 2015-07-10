@@ -1,0 +1,65 @@
+body,
+html,
+.wrapper {
+  color: #f0f0f0;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+main {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+  bottom: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+}
+main h1,
+main h2 {
+  margin: 0;
+}
+main h1 {
+  font-family: Dosis, sans-serif;
+  font-size: 4em;
+}
+main h2 {
+  font-family: 'Pinyon Script', serif;
+  font-size: 3em;
+}
+.wrapper {
+  overflow: hidden;
+  position: fixed;
+  width: 100vw;
+  z-index: -1;
+}
+.video {
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  width: 1280px;
+  height: 720px;
+}

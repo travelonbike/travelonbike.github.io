@@ -1,0 +1,44 @@
+@import 'nib'
+
+gris = rgb(240,240,240)
+negro = rgba(0,0,0,0.5)
+
+body, html, .wrapper
+  color gris
+  height 100vh
+  margin 0
+  padding 0
+
+main
+  align-items center
+  background-color negro
+  bottom 0
+  display flex
+  justify-content center
+  left 0
+  position absolute
+  right 0
+  text-align center
+  top 0
+  h1, h2
+    margin 0
+  h1
+    font-family Dosis, sans-serif
+    font-size 4em
+  h2
+    font-family 'Pinyon Script', serif
+    font-size 3em
+
+.wrapper
+  overflow hidden
+  position fixed
+  width 100vw
+  z-index -1
+
+.video
+  left 50%
+  position absolute
+  transform translate(-50%, -50%)
+  top 50%
+  width 1280px
+  height 720px

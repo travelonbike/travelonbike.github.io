@@ -1,0 +1,29 @@
+{
+  "name": "travelon.bike",
+  "version": "0.0.1",
+  "description": "TravelOn.bike",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/travelonbike/travelonbike.github.io.git"
+  },
+  "keywords": [
+    "bike"
+  ],
+  "author": "@pitakill",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/travelonbike/travelonbike.github.io/issues"
+  },
+  "homepage": "https://github.com/travelonbike/travelonbike.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-connect": "^2.2.0",
+    "gulp-jade": "^1.0.1",
+    "gulp-stylus": "^2.0.5",
+    "nib": "^1.1.0"
+  }
+}
