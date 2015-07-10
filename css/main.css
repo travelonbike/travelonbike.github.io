@@ -51,6 +51,10 @@ main h2 {
   width: 100vw;
   z-index: -1;
 }
+.wrapper #player {
+  height: inherit;
+  width: inherit;
+}
 .video {
   left: 50%;
   position: absolute;
