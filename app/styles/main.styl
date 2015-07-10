@@ -1,18 +1,20 @@
 @import 'nib'
 
-gris = rgb(240,240,240)
-negro = rgba(0,0,0,0.5)
+gris = rgb(213,213,213)
+gris_claro = rgb(240,240,240)
+negro_transparente = rgba(0,0,0,0.5)
 
 body, html, .wrapper
-  color gris
   height 100vh
   margin 0
   padding 0
 
 main
   align-items center
-  background-color negro
+  background-color negro_transparente
+  background-image url(http://www.transparenttextures.com/patterns/bright-squares.png)
   bottom 0
+  color darkseagreen
   display flex
   justify-content center
   left 0
@@ -22,12 +24,23 @@ main
   top 0
   h1, h2
     margin 0
+    span
+      &::selection
+        background-color negro_transparente
+        color red
   h1
     font-family Dosis, sans-serif
     font-size 4em
+    span
+      &:nth-child(2)
+        color brown
   h2
     font-family 'Pinyon Script', serif
     font-size 3em
+    span
+      transition all 500ms
+      &:hover
+        color red
 
 .wrapper
   overflow hidden

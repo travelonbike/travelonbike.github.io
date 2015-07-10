@@ -1,7 +1,6 @@
 body,
 html,
 .wrapper {
-  color: #f0f0f0;
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -14,7 +13,9 @@ main {
   -webkit-align-items: center;
   align-items: center;
   background-color: rgba(0,0,0,0.5);
+  background-image: url("http://www.transparenttextures.com/patterns/bright-squares.png");
   bottom: 0;
+  color: #8fbc8f;
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -37,13 +38,31 @@ main h1,
 main h2 {
   margin: 0;
 }
+main h1 span::selection,
+main h2 span::selection {
+  background-color: rgba(0,0,0,0.5);
+  color: #f00;
+}
 main h1 {
   font-family: Dosis, sans-serif;
   font-size: 4em;
 }
+main h1 span:nth-child(2) {
+  color: #a52a2a;
+}
 main h2 {
   font-family: 'Pinyon Script', serif;
   font-size: 3em;
+}
+main h2 span {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  -ms-transition: all 500ms;
+  transition: all 500ms;
+}
+main h2 span:hover {
+  color: #f00;
 }
 .wrapper {
   overflow: hidden;
