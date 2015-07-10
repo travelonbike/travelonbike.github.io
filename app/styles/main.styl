@@ -42,19 +42,47 @@ main
     &:hover
       color brown
 
+.loader
+  align-items center
+  background white
+  bottom 0
+  display flex
+  justify-content center
+  left 0
+  position fixed
+  right 0
+  top 0
+  z-index 100
+  #crank
+    animation spin 2s infinite ease-in-out
+    background url(../img/crank.jpg) center no-repeat
+    background-size cover
+    @keyframes spin
+      0%
+        transform rotate(0deg)
+      100%
+        transform rotate(360deg)
+    height 128px
+    width 128px
+
 .wrapper
   overflow hidden
   position fixed
   width 100vw
   z-index -1
+  .cover
+    background url(../img/bicycle.jpg) center no-repeat
+    height inherit
+    width inherit
+    @media screen and (max-width: 800px)
+      background-size contain
+  .video
+    left 50%
+    position absolute
+    transform translate(-50%, -50%)
+    top 50%
+    width 1280px
+    height 720px
   #player
     height inherit
     width inherit
-
-.video
-  left 50%
-  position absolute
-  transform translate(-50%, -50%)
-  top 50%
-  width 1280px
-  height 720px
