@@ -88,6 +88,11 @@ main h2:hover {
   position: fixed;
   right: 0;
   top: 0;
+  -webkit-transition: 500ms opacity;
+  -moz-transition: 500ms opacity;
+  -o-transition: 500ms opacity;
+  -ms-transition: 500ms opacity;
+  transition: 500ms opacity;
   z-index: 100;
 }
 .loader #crank {
@@ -174,9 +179,16 @@ main h2:hover {
   z-index: -1;
 }
 .wrapper .cover {
-  background: url("../img/bicycle.jpg") center no-repeat;
+  background: url("../img/bicycle.jpg") center no-repeat, #fff;
   height: inherit;
+  position: relative;
+  -webkit-transition: 500ms opacity;
+  -moz-transition: 500ms opacity;
+  -o-transition: 500ms opacity;
+  -ms-transition: 500ms opacity;
+  transition: 500ms opacity;
   width: inherit;
+  z-index: 5;
 }
 @media screen and (max-width: 800px) {
   .wrapper .cover {

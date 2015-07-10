@@ -32,7 +32,7 @@ html(lang='en')
     .wrapper
       .cover
       .video
-        //-#player
+        #player
         //-iframe(frameborder='0' height='100%' width='100%' src='https://www.youtube.com/embed/ZvrjQOHJIAA?rel=0&amp;controls=0&amp;showinfo=0&amp;loop=1&amp;autoplay=1&amp;enablejsapi=1')
     main
       section
@@ -50,7 +50,8 @@ html(lang='en')
       | function onYouTubePlayerAPIReady() {
       |   player = new YT.Player('player', {
       |       events: {
-      |         'onReady': onPlayerReady},
+      |         'onReady': onPlayerReady,
+      |         'onStateChange': onPlayerStateChange},
       |       height: '100%',
       |       playerVars: {
       |         'autoplay': 1,
@@ -64,5 +65,10 @@ html(lang='en')
       | }
       | function onPlayerReady(event) {
       |   event.target.mute();
-      |   console.log('Podemos empezar!;')
+      |   $('.loader').css('opacity',0)
+      | }
+      | function onPlayerStateChange(event) {
+      |   if (event.data == YT.PlayerState.PLAYING) {
+      |     $('.cover').css('opacity',0);
+      |   }
       | }

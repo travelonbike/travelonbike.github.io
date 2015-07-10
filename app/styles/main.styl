@@ -52,6 +52,7 @@ main
   position fixed
   right 0
   top 0
+  transition 500ms opacity
   z-index 100
   #crank
     animation spin 2s infinite ease-in-out
@@ -71,9 +72,12 @@ main
   width 100vw
   z-index -1
   .cover
-    background url(../img/bicycle.jpg) center no-repeat
+    background url(../img/bicycle.jpg) center no-repeat, white
     height inherit
+    position relative
+    transition 500ms opacity
     width inherit
+    z-index 5
     @media screen and (max-width: 800px)
       background-size contain
   .video
