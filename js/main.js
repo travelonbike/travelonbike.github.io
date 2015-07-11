@@ -59,8 +59,27 @@ function resizeVideo() {
   console.log('Resizing!');
 };
 
+var h1 = $('main section h1'),
+    h2 = $('main section h2'),
+    logo = $('.logo'),
+    elementsFadeOutUp = [h1],
+    elementsFadeOutDown = [h2,logo];
+
 function enter() {
-  alert("Click");
+  fadeOutUp(elementsFadeOutUp);
+  fadeOutDown(elementsFadeOutDown);
+};
+
+function fadeOutUp(elements) {
+  for(var i=0; i<elements.length; i++) {
+    elements[i].addClass('fadeOutUp');
+  }
+};
+
+function fadeOutDown(elements) {
+  for(var i=0;i<elements.length; i++) {
+    elements[i].addClass('fadeOutDown');
+  }
 };
 
 resizeVideo();

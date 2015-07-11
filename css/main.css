@@ -13,7 +13,7 @@ main {
   -webkit-align-items: center;
   align-items: center;
   background-color: rgba(0,0,0,0.65);
-  background-image: url("http://www.transparenttextures.com/patterns/bright-squares.png");
+  background-image: url("../img/bright-squares.png");
   bottom: 0;
   color: #8fbc8f;
   display: -webkit-box;
@@ -111,7 +111,7 @@ main section:hover h2 {
   -o-animation: spin 2s infinite ease-in-out;
   -ms-animation: spin 2s infinite ease-in-out;
   animation: spin 2s infinite ease-in-out;
-  background: url("../img/crank.jpg") center no-repeat;
+  background: url("../img/crank.png") center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
