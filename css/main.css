@@ -67,7 +67,7 @@ main h2 {
   -ms-transition: all 500ms;
   transition: all 500ms;
 }
-main h2:hover {
+main section:hover h2 {
   color: #ff8c00;
 }
 .loader {
