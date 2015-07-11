@@ -34,6 +34,13 @@ main {
   text-align: center;
   top: 0;
 }
+main figure {
+  color: #ff8c00;
+  margin: 0;
+}
+main figure svg {
+  fill: currentColor;
+}
 main h1,
 main h2 {
   margin: 0;
@@ -48,7 +55,7 @@ main h1 {
   font-size: 4rem;
 }
 main h1 span:nth-child(2) {
-  color: #a52a2a;
+  color: #ff8c00;
   font-size: 5.5rem;
 }
 main h2 {
@@ -61,7 +68,7 @@ main h2 {
   transition: all 500ms;
 }
 main h2:hover {
-  color: #a52a2a;
+  color: #ff8c00;
 }
 .loader {
   -webkit-box-align: center;
