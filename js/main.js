@@ -1,3 +1,4 @@
+'use strict';
 //YouTube video shit.
 var loader = $('.loader'),
     cover = $('.cover');
@@ -37,55 +38,65 @@ function onPlayerStateChange(event) {
 
 //jQuery after everything loads.
 $(function(){
-'use strict';
 
-var Wrapper = $('.wrapper'),
-    Video = $('.video');
+//Self explaining variables. Duh!
+var keepRatio = 1.7777777777, //keeps 16:9 ratio
+    logo = $('#logo'),
+    title = $('#title'),
+    subtitle = $('#subtitle'),
+    video = $('.video'),
+    wrapper = $('.wrapper'),
+    welcome = $('#welcome'),
+    window = $(window);
 
+//Helpers for keep this shit working.
+function enter() {
+  animate(title, 'fadeOutUp');
+  animate([subtitle,logo], 'fadeOutDown');
+  remove(welcome);
+};
+function animate(elements, animation) {
+  if ($.isArray(elements)) {
+    for(var i=0; i<elements.length; i++) {
+      elements[i].addClass(animation);
+    }
+  } else {
+    elements.addClass(animation);
+  }
+};
 function resizeVideo() {
-  var WrapperWidth = Wrapper.width(),
-      WrapperHeight = Wrapper.height();
-  if (WrapperWidth / WrapperHeight >= 1.7777777777) {
-    Video.css({
-      height: WrapperWidth/1.7777777777,
-      width: WrapperWidth
+  var wrapperWidth = wrapper.width(),
+      wrapperHeight = wrapper.height();
+  if (wrapperWidth / wrapperHeight >= keepRatio) {
+    video.css({
+      height: wrapperWidth/keepRatio,
+      width: wrapperWidth
     });
   } else {
-    Video.css({
-      height: WrapperHeight,
-      width: WrapperHeight*1.7777777777
+    video.css({
+      height: wrapperHeight,
+      width: wrapperHeight*keepRatio
     });
   }
-  console.log('Resizing!');
+};
+function remove(elements) {
+  if ($.isArray(elements)) {
+    for(var i=0; i<elements.length; i++) {
+      setTimeout(function(){
+        elements.remove();
+      }, 500, elements);
+    }
+  } else {
+    setTimeout(function(){
+      elements.remove();
+    }, 500, elements);
+  };
 };
 
-var h1 = $('main section h1'),
-    h2 = $('main section h2'),
-    logo = $('.logo'),
-    elementsFadeOutUp = [h1],
-    elementsFadeOutDown = [h2,logo];
-
-function enter() {
-  fadeOutUp(elementsFadeOutUp);
-  fadeOutDown(elementsFadeOutDown);
-};
-
-function fadeOutUp(elements) {
-  for(var i=0; i<elements.length; i++) {
-    elements[i].addClass('fadeOutUp');
-  }
-};
-
-function fadeOutDown(elements) {
-  for(var i=0;i<elements.length; i++) {
-    elements[i].addClass('fadeOutDown');
-  }
-};
-
+//This shit inits.
 resizeVideo();
-$(window).resize(resizeVideo);
-
-$('main > section').click(enter);
+window.resize(resizeVideo);
+welcome.click(enter);
 
 //SVG shit for use CSS
 /*

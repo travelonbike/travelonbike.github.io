@@ -1,6 +1,18 @@
+* {
+  -webkit-transition: 500ms all;
+  -moz-transition: 500ms all;
+  -o-transition: 500ms all;
+  -ms-transition: 500ms all;
+  transition: 500ms all;
+}
+*::selection {
+  background-color: rgba(0,0,0,0.65);
+  color: #f00;
+}
 body,
 html,
 .wrapper {
+  font-family: Dosis, sans-serif;
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -34,44 +46,39 @@ main {
   text-align: center;
   top: 0;
 }
-main figure {
-  color: #ff8c00;
-  margin: 0;
+main #info {
+  display: none;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
 }
-main figure svg {
-  fill: currentColor;
-}
-main h1,
-main h2 {
-  margin: 0;
-}
-main h1 span::selection,
-main h2::selection {
-  background-color: rgba(0,0,0,0.65);
-  color: #f00;
-}
-main h1 {
-  font-family: Dosis, sans-serif;
-  font-size: 4rem;
-}
-main h1 span:nth-child(2) {
-  color: #ff8c00;
-  font-size: 5.5rem;
-}
-main h2 {
-  font-family: 'Pinyon Script', serif;
-  font-size: 3rem;
-  -webkit-transition: all 500ms;
-  -moz-transition: all 500ms;
-  -o-transition: all 500ms;
-  -ms-transition: all 500ms;
-  transition: all 500ms;
-}
-main section {
+main #welcome {
   cursor: pointer;
 }
-main section:hover h2 {
+main #welcome figure {
   color: #ff8c00;
+  margin: 0;
+}
+main #welcome figure svg {
+  fill: currentColor;
+}
+main #welcome h1,
+main #welcome h2 {
+  margin: 0;
+}
+main #welcome h1 {
+  font-size: 4rem;
+}
+main #welcome h2 {
+  font-family: 'Pinyon Script', serif;
+  font-size: 3rem;
+}
+main #welcome:hover h2 {
+  color: #ff8c00;
+}
+.highlighted {
+  color: #ff8c00;
+  font-size: 1.75em;
 }
 .loader {
   -webkit-box-align: center;
@@ -98,11 +105,6 @@ main section:hover h2 {
   position: fixed;
   right: 0;
   top: 0;
-  -webkit-transition: 500ms opacity;
-  -moz-transition: 500ms opacity;
-  -o-transition: 500ms opacity;
-  -ms-transition: 500ms opacity;
-  transition: 500ms opacity;
   z-index: 100;
 }
 .loader #crank {
@@ -192,11 +194,6 @@ main section:hover h2 {
   background: url("../img/bicycle.jpg") center no-repeat, #fff;
   height: inherit;
   position: relative;
-  -webkit-transition: 500ms opacity;
-  -moz-transition: 500ms opacity;
-  -o-transition: 500ms opacity;
-  -ms-transition: 500ms opacity;
-  transition: 500ms opacity;
   width: inherit;
   z-index: 5;
 }

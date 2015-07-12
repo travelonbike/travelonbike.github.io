@@ -4,7 +4,14 @@ gris = rgb(213,213,213)
 gris_claro = rgb(240,240,240)
 negro_transparente = rgba(0,0,0,0.65)
 
+*
+  transition 500ms all
+  &::selection
+    background-color negro_transparente
+    color red
+
 body, html, .wrapper
+  font-family Dosis, sans-serif
   height 100vh
   margin 0
   padding 0
@@ -22,33 +29,30 @@ main
   right 0
   text-align center
   top 0
-  figure
-    color darkorange
-    margin 0
-    svg
-      fill currentColor
-  h1, h2
-    margin 0
-  h1 span, h2
-    &::selection
-      background-color negro_transparente
-      color red
-  h1
-    font-family Dosis, sans-serif
-    font-size 4rem
-    span
-      &:nth-child(2)
-        color darkorange
-        font-size 5.5rem
-  h2
-    font-family 'Pinyon Script', serif
-    font-size 3rem
-    transition all 500ms
-  section
+  #info
+    display none
+    opacity 0
+  #welcome
     cursor pointer
+    figure
+      color darkorange
+      margin 0
+      svg
+        fill currentColor
+    h1, h2
+      margin 0
+    h1
+      font-size 4rem
+    h2
+      font-family 'Pinyon Script', serif
+      font-size 3rem
     &:hover
       h2
         color darkorange
+
+.highlighted
+  color darkorange
+  font-size 1.75em
 
 .loader
   align-items center
@@ -60,7 +64,6 @@ main
   position fixed
   right 0
   top 0
-  transition 500ms opacity
   z-index 100
   #crank
     animation spin 2s infinite ease-in-out
@@ -83,7 +86,6 @@ main
     background url(../img/bicycle.jpg) center no-repeat, white
     height inherit
     position relative
-    transition 500ms opacity
     width inherit
     z-index 5
     @media screen and (max-width: 800px)

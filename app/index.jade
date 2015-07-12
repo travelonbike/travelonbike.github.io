@@ -3,7 +3,7 @@ html(lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
-    title travelon.bike Ciudad de México
+    title Cycling on cities
     link(rel='apple-touch-icon' sizes='57x57' href='img/favicon/apple-icon-57x57.png')
     link(rel='apple-touch-icon' sizes='60x60' href='img/favicon/apple-icon-60x60.png')
     link(rel='apple-touch-icon' sizes='72x72' href='img/favicon/apple-icon-72x72.png')
@@ -35,14 +35,19 @@ html(lang='en')
         #player
         //-#player(style='display:none')
     main
-      section
-        h1.animated
+      section#welcome
+        h1#title.animated
           span travelon
-          span .
+          span.highlighted .
           span bike
-        h2.animated Ciudad de México
-        figure.animated.logo
+        h2#subtitle.animated Ciudad de México
+        figure#logo.animated
           img(src='img/victoria_alada.svg' class='svg' alt='La Victoria Alada')
+      section#info
+        h1
+          span ¿Qué es travelon
+          span.highlighted .
+          span bike?
     .acknowledments(style='display:none')
       span Icon made by 
       a(href='http://www.freepik.com' title='Freepik') Freepik 
