@@ -5,17 +5,26 @@ gris_claro = rgb(240,240,240)
 negro_transparente = rgba(0,0,0,0.65)
 
 *
+  -webkit-tap-highlight-color transparent
+  -moz-tap-highlight-color transparent
   transition 500ms all
   &::selection
     background-color negro_transparente
     color red
-
 body, html, .wrapper
   font-family Dosis, sans-serif
+  font-size 16px
   height 100vh
   margin 0
   padding 0
-
+h1
+  font-size 4rem
+h1,h2
+  margin 0
+h2
+  font-size 3rem
+p
+  font-size 1.75rem
 main
   align-items center
   background-color negro_transparente
@@ -32,6 +41,8 @@ main
   #info
     display none
     opacity 0
+    h2
+      line-height 1em
   #welcome
     cursor pointer
     figure
@@ -39,21 +50,14 @@ main
       margin 0
       svg
         fill currentColor
-    h1, h2
-      margin 0
-    h1
-      font-size 4rem
     h2
       font-family 'Pinyon Script', serif
-      font-size 3rem
     &:hover
       h2
         color darkorange
-
 .highlighted
   color darkorange
   font-size 1.75em
-
 .loader
   align-items center
   background white
@@ -76,7 +80,6 @@ main
         transform rotate(360deg)
     height 128px
     width 128px
-
 .wrapper
   overflow hidden
   position fixed

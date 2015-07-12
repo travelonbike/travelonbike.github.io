@@ -19,7 +19,8 @@ function onYouTubePlayerAPIReady() {
       'loop': 1,
       'rel': 0,
       'showinfo': 0},
-    videoId: 'ZvrjQOHJIAA',
+    //videoId: 'ZvrjQOHJIAA',
+      videoId: 0,
     width: '100%'
  });
 };
@@ -41,7 +42,9 @@ $(function(){
 
 //Self explaining variables. Duh!
 var keepRatio = 1.7777777777, //keeps 16:9 ratio
+    info = $('#info'),
     logo = $('#logo'),
+    timeAnimation = 500,
     title = $('#title'),
     subtitle = $('#subtitle'),
     video = $('.video'),
@@ -54,6 +57,7 @@ function enter() {
   animate(title, 'fadeOutUp');
   animate([subtitle,logo], 'fadeOutDown');
   remove(welcome);
+  setTimeout(show(info), timeAnimation);
 };
 function animate(elements, animation) {
   if ($.isArray(elements)) {
@@ -82,15 +86,20 @@ function resizeVideo() {
 function remove(elements) {
   if ($.isArray(elements)) {
     for(var i=0; i<elements.length; i++) {
-      setTimeout(function(){
-        elements.remove();
-      }, 500, elements);
+      setTimeout(function(x) {
+        elements[i].remove();
+      }(i), timeAnimation, elements);
     }
   } else {
     setTimeout(function(){
       elements.remove();
-    }, 500, elements);
+    }, timeAnimation, elements);
   };
+};
+function show(elements){
+  elements.show(timeAnimation, function(){
+    $(this).css('opacity',1);
+  });
 };
 
 //This shit inits.

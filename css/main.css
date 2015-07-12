@@ -1,4 +1,6 @@
 * {
+  -webkit-tap-highlight-color: transparent;
+  -moz-tap-highlight-color: transparent;
   -webkit-transition: 500ms all;
   -moz-transition: 500ms all;
   -o-transition: 500ms all;
@@ -13,9 +15,23 @@ body,
 html,
 .wrapper {
   font-family: Dosis, sans-serif;
+  font-size: 16px;
   height: 100vh;
   margin: 0;
   padding: 0;
+}
+h1 {
+  font-size: 4rem;
+}
+h1,
+h2 {
+  margin: 0;
+}
+h2 {
+  font-size: 3rem;
+}
+p {
+  font-size: 1.75rem;
 }
 main {
   -webkit-box-align: center;
@@ -52,6 +68,9 @@ main #info {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
 }
+main #info h2 {
+  line-height: 1em;
+}
 main #welcome {
   cursor: pointer;
 }
@@ -62,16 +81,8 @@ main #welcome figure {
 main #welcome figure svg {
   fill: currentColor;
 }
-main #welcome h1,
-main #welcome h2 {
-  margin: 0;
-}
-main #welcome h1 {
-  font-size: 4rem;
-}
 main #welcome h2 {
   font-family: 'Pinyon Script', serif;
-  font-size: 3rem;
 }
 main #welcome:hover h2 {
   color: #ff8c00;
