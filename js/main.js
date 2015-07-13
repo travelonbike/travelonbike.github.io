@@ -20,7 +20,6 @@ function onYouTubePlayerAPIReady() {
       'rel': 0,
       'showinfo': 0},
     //videoId: 'ZvrjQOHJIAA',
-      videoId: 0,
     width: '100%'
  });
 };
@@ -28,12 +27,14 @@ function onPlayerReady(event) {
   event.target.mute();
   loader.css('opacity',0);
   window.setTimeout(function(){
-    loader.remove();
+    loader.css('display','none');
   }, 500);
 };
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PLAYING) {
-    $('.cover').css('opacity',0);
+    cover.css('opacity',0);
+  } else if (event.data == YT.PlayerState.ENDED) {
+    cover.css('opacity',1);
   }
 };
 
@@ -41,33 +42,11 @@ function onPlayerStateChange(event) {
 $(function(){
 
 //Self explaining variables. Duh!
-var keepRatio = 1.7777777777, //keeps 16:9 ratio
-    info = $('#info'),
-    logo = $('#logo'),
-    timeAnimation = 500,
-    title = $('#title'),
-    subtitle = $('#subtitle'),
+var keepRatio = 1.7777777777, //16:9 ratio
     video = $('.video'),
-    wrapper = $('.wrapper'),
-    welcome = $('#welcome'),
-    window = $(window);
+    wrapper = $('.wrapper');
 
 //Helpers for keep this shit working.
-function enter() {
-  animate(title, 'fadeOutUp');
-  animate([subtitle,logo], 'fadeOutDown');
-  remove(welcome);
-  setTimeout(show(info), timeAnimation);
-};
-function animate(elements, animation) {
-  if ($.isArray(elements)) {
-    for(var i=0; i<elements.length; i++) {
-      elements[i].addClass(animation);
-    }
-  } else {
-    elements.addClass(animation);
-  }
-};
 function resizeVideo() {
   var wrapperWidth = wrapper.width(),
       wrapperHeight = wrapper.height();
@@ -83,54 +62,9 @@ function resizeVideo() {
     });
   }
 };
-function remove(elements) {
-  if ($.isArray(elements)) {
-    for(var i=0; i<elements.length; i++) {
-      setTimeout(function(x) {
-        elements[i].remove();
-      }(i), timeAnimation, elements);
-    }
-  } else {
-    setTimeout(function(){
-      elements.remove();
-    }, timeAnimation, elements);
-  };
-};
-function show(elements){
-  elements.show(timeAnimation, function(){
-    $(this).css('opacity',1);
-  });
-};
 
 //This shit inits.
 resizeVideo();
-window.resize(resizeVideo);
-welcome.click(enter);
+$(window).resize(resizeVideo);
 
-//SVG shit for use CSS
-/*
- * Replace all SVG images with inline SVG
- */
-jQuery('img.svg').each(function(){
-  var $img = jQuery(this);
-  var imgID = $img.attr('id');
-  var imgClass = $img.attr('class');
-  var imgURL = $img.attr('src');
-  jQuery.get(imgURL, function(data) {
-    // Get the SVG tag, ignore the rest
-    var $svg = jQuery(data).find('svg');
-    // Add replaced image's ID to the new SVG
-    if(typeof imgID !== 'undefined') {
-        $svg = $svg.attr('id', imgID);
-    }
-    // Add replaced image's classes to the new SVG
-    if(typeof imgClass !== 'undefined') {
-        $svg = $svg.attr('class', imgClass+' replaced-svg');
-    }
-    // Remove any invalid XML tags as per http://validator.w3.org
-    $svg = $svg.removeAttr('xmlns:a');
-    // Replace image with new SVG
-    $img.replaceWith($svg);
-  }, 'xml');
-});
 });

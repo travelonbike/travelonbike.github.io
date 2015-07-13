@@ -1,5 +1,5 @@
 doctype html
-html(lang='en')
+html(lang='en' ng-app='bike')
   head
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
@@ -25,31 +25,20 @@ html(lang='en')
     link(href='css/animate.min.css' rel='stylesheet')
     link(href='css/main.css' rel='stylesheet')
     link(href='http://fonts.googleapis.com/css?family=Dosis:500|Pinyon+Script' rel='stylesheet' type='text/css')
+    script(src='js/angular.min.js')
+    script(src='js/angular-route.min.js')
+    script(src='js/angular-animate.min.js')
     script(src='js/jquery.min.js')
   body
     .loader
       #crank
     .wrapper
+      .window
       .cover
       .video
         #player
         //-#player(style='display:none')
-    main
-      section#welcome
-        h1#title.animated
-          span travelon
-          span.highlighted .
-          span bike
-        h2#subtitle.animated Ciudad de México
-        figure#logo.animated
-          img(src='img/victoria_alada.svg' class='svg' alt='La Victoria Alada')
-      section#info
-        h2
-          span ¿Qué es travelon
-          span.highlighted .
-          span bike?
-        p La premisa es simple:
-        p.highlighted Pedalear toda la ciudad y tener un registro de ello.
+    main(ng-view)
     .acknowledments(style='display:none')
       span Icon made by 
       a(href='http://www.freepik.com' title='Freepik') Freepik 
@@ -57,4 +46,5 @@ html(lang='en')
       a(href='http://www.flaticon.com' title='Flaticon') www.flaticon.com 
       span is licensed under 
       a(href='http://creativecommons.org/licenses/by/3.0/' title='Creative Commons BY 3.0') CC BY 3.0
+    script(src='js/app.js')
     script(src='js/main.js')
