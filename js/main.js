@@ -103,7 +103,7 @@ function show(elements){
 
 //This shit inits.
 resizeVideo();
-window.resize(resizeVideo);
+$(window).resize(resizeVideo);
 welcome.click(enter);
 
 //SVG shit for use CSS
