@@ -1,11 +1,11 @@
 * {
   -webkit-tap-highlight-color: transparent;
   -moz-tap-highlight-color: transparent;
-  -webkit-transition: opacity 500ms, color 500ms;
-  -moz-transition: opacity 500ms, color 500ms;
-  -o-transition: opacity 500ms, color 500ms;
-  -ms-transition: opacity 500ms, color 500ms;
-  transition: opacity 500ms, color 500ms;
+  -webkit-transition: opacity 300ms, color 300ms;
+  -moz-transition: opacity 300ms, color 300ms;
+  -o-transition: opacity 300ms, color 300ms;
+  -ms-transition: opacity 300ms, color 300ms;
+  transition: opacity 300ms, color 300ms;
 }
 *::selection {
   background-color: rgba(0,0,0,0.65);
@@ -37,50 +37,10 @@ p {
   font-size: 1.75rem;
 }
 main {
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -o-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  color: #8fbc8f;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -o-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: center;
-}
-main #info h2 {
-  line-height: 1em;
-}
-main #info h2 span.logoText {
-  text-shadow: 0 1px 0 rgba(255,255,250,0.4);
-}
-main #welcome figure {
-  color: #ff8c00;
-  margin: 0;
-}
-main #welcome figure svg {
-  fill: currentColor;
-}
-main #welcome a {
-  color: #8fbc8f;
-  text-decoration: none;
-}
-main #welcome a:hover h2 {
-  color: #ff8c00;
-}
-main #welcome a h2 {
-  font-family: 'Pinyon Script', serif;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
 }
 span.highlighted {
   line-height: 1rem;
@@ -129,6 +89,61 @@ span.highlighted {
   background-size: cover;
   height: 128px;
   width: 128px;
+}
+.view {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  bottom: 0;
+  color: #8fbc8f;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  left: 0;
+  min-height: 100vh;
+  right: 0;
+  text-align: center;
+  top: 0;
+}
+.view #info h2 {
+  line-height: 1em;
+}
+.view #info h2 span.logoText {
+  text-shadow: 0 1px 0 rgba(255,255,250,0.4);
+}
+.view #welcome {
+  max-width: 100%;
+}
+.view #welcome figure {
+  color: #ff8c00;
+  margin: 0;
+}
+.view #welcome figure svg {
+  fill: currentColor;
+}
+.view #welcome a {
+  color: #8fbc8f;
+  text-decoration: none;
+}
+.view #welcome a h2 {
+  font-family: 'Pinyon Script', serif;
+  -webkit-animation: beat 3s infinite;
+  -moz-animation: beat 3s infinite;
+  -o-animation: beat 3s infinite;
+  -ms-animation: beat 3s infinite;
+  animation: beat 3s infinite;
 }
 .wrapper {
   overflow: hidden;
@@ -182,22 +197,17 @@ span.highlighted {
   background-image: url("../img/bright-squares.png");
   z-index: -10;
 }
-main.ng-enter {
-  backgroun: #0ff;
-  opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
-  -webkit-transition: 0.5s linear all;
-  -moz-transition: 0.5s linear all;
-  -o-transition: 0.5s linear all;
-  -ms-transition: 0.5s linear all;
-  transition: 0.5s linear all;
-}
-main.ng-enter-active {
-  background: #f00;
+.view.ng-enter,
+.view.ng-leave {
   opacity: 1;
   -ms-filter: none;
   filter: none;
+}
+.view.ng-enter.ng-enter-active,
+.view.ng-leave.ng-leave-active {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
 }
 @-moz-keyframes spin {
   0% {
@@ -263,75 +273,71 @@ main.ng-enter-active {
     transform: rotate(360deg);
   }
 }
-@-moz-keyframes zoomIn {
+@-moz-keyframes beat {
   0% {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    -moz-transform: scale3d(0.3, 0.3, 0.3);
-    -o-transform: scale3d(0.3, 0.3, 0.3);
-    -ms-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
+    color: currentColor;
   }
-  50% {
-    opacity: 1;
-    -ms-filter: none;
-    filter: none;
+  40% {
+    color: currentColor;
+  }
+  65% {
+    color: #ff8c00;
+  }
+  85% {
+    color: currentColor;
+  }
+  100% {
+    color: currentColor;
   }
 }
-@-webkit-keyframes zoomIn {
+@-webkit-keyframes beat {
   0% {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    -moz-transform: scale3d(0.3, 0.3, 0.3);
-    -o-transform: scale3d(0.3, 0.3, 0.3);
-    -ms-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
+    color: currentColor;
   }
-  50% {
-    opacity: 1;
-    -ms-filter: none;
-    filter: none;
+  40% {
+    color: currentColor;
+  }
+  65% {
+    color: #ff8c00;
+  }
+  85% {
+    color: currentColor;
+  }
+  100% {
+    color: currentColor;
   }
 }
-@-o-keyframes zoomIn {
+@-o-keyframes beat {
   0% {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    -moz-transform: scale3d(0.3, 0.3, 0.3);
-    -o-transform: scale3d(0.3, 0.3, 0.3);
-    -ms-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
+    color: currentColor;
   }
-  50% {
-    opacity: 1;
-    -ms-filter: none;
-    filter: none;
+  40% {
+    color: currentColor;
+  }
+  65% {
+    color: #ff8c00;
+  }
+  85% {
+    color: currentColor;
+  }
+  100% {
+    color: currentColor;
   }
 }
-@keyframes zoomIn {
+@keyframes beat {
   0% {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    -moz-transform: scale3d(0.3, 0.3, 0.3);
-    -o-transform: scale3d(0.3, 0.3, 0.3);
-    -ms-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
+    color: currentColor;
   }
-  50% {
-    opacity: 1;
-    -ms-filter: none;
-    filter: none;
+  40% {
+    color: currentColor;
+  }
+  65% {
+    color: #ff8c00;
+  }
+  85% {
+    color: currentColor;
+  }
+  100% {
+    color: currentColor;
   }
 }

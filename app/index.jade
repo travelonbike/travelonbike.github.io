@@ -1,5 +1,5 @@
 doctype html
-html(lang='en' ng-app='bike')
+html(lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
@@ -38,7 +38,8 @@ html(lang='en' ng-app='bike')
       .video
         #player
         //-#player(style='display:none')
-    main(ng-view)
+    main(ng-app='bike')
+      .view(ng-view class='{{pageClass}}')
     .acknowledments(style='display:none')
       span Icon made by 
       a(href='http://www.freepik.com' title='Freepik') Freepik 

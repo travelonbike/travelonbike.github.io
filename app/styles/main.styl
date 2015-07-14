@@ -1,13 +1,15 @@
 @import 'nib'
 
+delay = 300ms
 gris = rgb(213,213,213)
 gris_claro = rgb(240,240,240)
 negro_transparente = rgba(0,0,0,0.65)
+verde_oscuro = rgb(177,234,177) //darkseagreen lighten
 
 *
   -webkit-tap-highlight-color transparent
   -moz-tap-highlight-color transparent
-  transition opacity 500ms, color 500ms
+  transition opacity delay, color delay
   &::selection
     background-color negro_transparente
     color red
@@ -28,31 +30,10 @@ h2
 p
   font-size 1.75rem
 main
-  align-items center
-  color darkseagreen
-  display flex
-  justify-content center
-  min-height 100vh
-  text-align center
-  #info
-    h2
-      line-height 1em
-      span.logoText
-        text-shadow 0 1px 0 rgba(255,255,250,0.4)
-  #welcome
-    figure
-      color darkorange
-      margin 0
-      svg
-        fill currentColor
-    a
-      color darkseagreen
-      text-decoration none
-      &:hover
-        h2
-          color darkorange
-      h2
-        font-family 'Pinyon Script', serif
+  height 100vh
+  overflow hidden
+  position relative
+  width 100vw
 span.highlighted
   line-height 1rem
 .highlighted
@@ -76,6 +57,35 @@ span.highlighted
     background-size cover
     height 128px
     width 128px
+.view
+  align-items center
+  bottom 0
+  color darkseagreen
+  display flex
+  justify-content center
+  left 0
+  min-height 100vh
+  right 0
+  text-align center
+  top 0
+  #info
+    h2
+      line-height 1em
+      span.logoText
+        text-shadow 0 1px 0 rgba(255,255,250,0.4)
+  #welcome
+    max-width 100%
+    figure
+      color darkorange
+      margin 0
+      svg
+        fill currentColor
+    a
+      color darkseagreen
+      text-decoration none
+      h2
+        font-family 'Pinyon Script', serif
+        animation beat 3s infinite 
 .wrapper
   overflow hidden
   position fixed
@@ -113,19 +123,22 @@ span.highlighted
     transform rotate(0deg)
   100%
     transform rotate(360deg)
-
-@keyframes zoomIn
+@keyframes beat
   0%
-    opacity: 0
-    -webkit-transform: scale3d(.3, .3, .3)
-    transform: scale3d(.3, .3, .3)
-  50%
-    opacity: 1
+    color currentColor
+  40%
+    color currentColor
+  65%
+    color darkorange
+  85%
+    color currentColor
+  100%
+    color currentColor
 
-main.ng-enter
-  backgroun cyan
-  opacity 0
-  transition 0.5s linear all
-main.ng-enter-active
-  background red
+//ngAnimate classes
+.view.ng-enter,
+.view.ng-leave
   opacity 1
+.view.ng-enter.ng-enter-active,
+.view.ng-leave.ng-leave-active
+  opacity 0

@@ -14,6 +14,7 @@ config([
         templateUrl: 'welcome.html'
       }).
       when('/info', {
+        controller: 'InfoController',
         templateUrl: 'info.html'
       }).
       otherwise({
@@ -54,9 +55,15 @@ controller('WelcomeController',[
         });
       });
     };
-    //$scope.pageClass = 'welcomePage';
+    $scope.pageClass = 'welcomePage';
     $scope.load();
   }
-]);
+]).
+controller('InfoController',[
+  '$scope',
+  function($scope){
+    $scope.pageClass = 'infoPage';
+  }
+])
 
 })();
