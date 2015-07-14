@@ -66,9 +66,5 @@ function resizeVideo() {
 //This shit inits.
 resizeVideo();
 $(window).resize(resizeVideo);
-<<<<<<< HEAD
-welcome.click(enter);
-=======
->>>>>>> ng
 
 });
