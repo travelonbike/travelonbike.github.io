@@ -1,13 +1,15 @@
 @import 'nib'
 
+delay = 300ms
 gris = rgb(213,213,213)
 gris_claro = rgb(240,240,240)
 negro_transparente = rgba(0,0,0,0.65)
+verde_oscuro = rgb(177,234,177) //darkseagreen lighten
 
 *
   -webkit-tap-highlight-color transparent
   -moz-tap-highlight-color transparent
-  transition 500ms all
+  transition opacity delay, color delay
   &::selection
     background-color negro_transparente
     color red
@@ -19,6 +21,8 @@ body, html, .wrapper
   padding 0
 h1
   font-size 4rem
+  span.logoText
+    text-shadow 0 2px 0 rgba(255,255,250,0.4)
 h1,h2
   margin 0
 h2
@@ -26,38 +30,16 @@ h2
 p
   font-size 1.75rem
 main
-  align-items center
-  background-color negro_transparente
-  background-image url(../img/bright-squares.png)
-  bottom 0
-  color darkseagreen
-  display flex
-  justify-content center
-  left 0
-  position absolute
-  right 0
-  text-align center
-  top 0
-  #info
-    display none
-    opacity 0
-    h2
-      line-height 1em
-  #welcome
-    cursor pointer
-    figure
-      color darkorange
-      margin 0
-      svg
-        fill currentColor
-    h2
-      font-family 'Pinyon Script', serif
-    &:hover
-      h2
-        color darkorange
+  height 100vh
+  overflow hidden
+  position relative
+  width 100vw
+span.highlighted
+  line-height 1rem
 .highlighted
   color darkorange
   font-size 1.75em
+  text-shadow none
 .loader
   align-items center
   background white
@@ -73,33 +55,90 @@ main
     animation spin 2s infinite ease-in-out
     background url(../img/crank.png) center no-repeat
     background-size cover
-    @keyframes spin
-      0%
-        transform rotate(0deg)
-      100%
-        transform rotate(360deg)
     height 128px
     width 128px
+.view
+  align-items center
+  bottom 0
+  color darkseagreen
+  display flex
+  justify-content center
+  left 0
+  min-height 100vh
+  right 0
+  text-align center
+  top 0
+  #info
+    h2
+      line-height 1em
+      span.logoText
+        text-shadow 0 1px 0 rgba(255,255,250,0.4)
+  #welcome
+    max-width 100%
+    figure
+      color darkorange
+      margin 0
+      svg
+        fill currentColor
+    a
+      color darkseagreen
+      text-decoration none
+      h2
+        font-family 'Pinyon Script', serif
+        animation beat 3s infinite 
 .wrapper
   overflow hidden
   position fixed
   width 100vw
-  z-index -1
+  z-index -5
+  .cover, .video, .window
+    height inherit
+    left 0
+    position absolute
+    top 0
+    width inherit
   .cover
     background url(../img/bicycle.jpg) center no-repeat, white
-    height inherit
-    position relative
-    width inherit
-    z-index 5
+    z-index -15
+    @media screen and (max-height: 480px)
+      background-size contain
     @media screen and (max-width: 800px)
       background-size contain
   .video
     left 50%
-    position absolute
-    transform translate(-50%, -50%)
     top 50%
-    width 1280px
-    height 720px
-  #player
-    height inherit
-    width inherit
+    transform translate(-50%, -50%)
+    z-index -20
+    #player
+      height inherit
+      width inherit
+  .window
+    background-color negro_transparente
+    background-image url(../img/bright-squares.png)
+    z-index -10
+
+//Animations
+@keyframes spin
+  0%
+    transform rotate(0deg)
+  100%
+    transform rotate(360deg)
+@keyframes beat
+  0%
+    color currentColor
+  40%
+    color currentColor
+  65%
+    color darkorange
+  85%
+    color currentColor
+  100%
+    color currentColor
+
+//ngAnimate classes
+.view.ng-enter,
+.view.ng-leave
+  opacity 1
+.view.ng-enter.ng-enter-active,
+.view.ng-leave.ng-leave-active
+  opacity 0

@@ -1,11 +1,11 @@
 * {
   -webkit-tap-highlight-color: transparent;
   -moz-tap-highlight-color: transparent;
-  -webkit-transition: 500ms all;
-  -moz-transition: 500ms all;
-  -o-transition: 500ms all;
-  -ms-transition: 500ms all;
-  transition: 500ms all;
+  -webkit-transition: opacity 300ms, color 300ms;
+  -moz-transition: opacity 300ms, color 300ms;
+  -o-transition: opacity 300ms, color 300ms;
+  -ms-transition: opacity 300ms, color 300ms;
+  transition: opacity 300ms, color 300ms;
 }
 *::selection {
   background-color: rgba(0,0,0,0.65);
@@ -23,6 +23,9 @@ html,
 h1 {
   font-size: 4rem;
 }
+h1 span.logoText {
+  text-shadow: 0 2px 0 rgba(255,255,250,0.4);
+}
 h1,
 h2 {
   margin: 0;
@@ -34,62 +37,18 @@ p {
   font-size: 1.75rem;
 }
 main {
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -o-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  background-color: rgba(0,0,0,0.65);
-  background-image: url("../img/bright-squares.png");
-  bottom: 0;
-  color: #8fbc8f;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -o-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  left: 0;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
 }
-main #info {
-  display: none;
-  opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
-}
-main #info h2 {
-  line-height: 1em;
-}
-main #welcome {
-  cursor: pointer;
-}
-main #welcome figure {
-  color: #ff8c00;
-  margin: 0;
-}
-main #welcome figure svg {
-  fill: currentColor;
-}
-main #welcome h2 {
-  font-family: 'Pinyon Script', serif;
-}
-main #welcome:hover h2 {
-  color: #ff8c00;
+span.highlighted {
+  line-height: 1rem;
 }
 .highlighted {
   color: #ff8c00;
   font-size: 1.75em;
+  text-shadow: none;
 }
 .loader {
   -webkit-box-align: center;
@@ -130,6 +89,125 @@ main #welcome:hover h2 {
   background-size: cover;
   height: 128px;
   width: 128px;
+}
+.view {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  bottom: 0;
+  color: #8fbc8f;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  left: 0;
+  min-height: 100vh;
+  right: 0;
+  text-align: center;
+  top: 0;
+}
+.view #info h2 {
+  line-height: 1em;
+}
+.view #info h2 span.logoText {
+  text-shadow: 0 1px 0 rgba(255,255,250,0.4);
+}
+.view #welcome {
+  max-width: 100%;
+}
+.view #welcome figure {
+  color: #ff8c00;
+  margin: 0;
+}
+.view #welcome figure svg {
+  fill: currentColor;
+}
+.view #welcome a {
+  color: #8fbc8f;
+  text-decoration: none;
+}
+.view #welcome a h2 {
+  font-family: 'Pinyon Script', serif;
+  -webkit-animation: beat 3s infinite;
+  -moz-animation: beat 3s infinite;
+  -o-animation: beat 3s infinite;
+  -ms-animation: beat 3s infinite;
+  animation: beat 3s infinite;
+}
+.wrapper {
+  overflow: hidden;
+  position: fixed;
+  width: 100vw;
+  z-index: -5;
+}
+.wrapper .cover,
+.wrapper .video,
+.wrapper .window {
+  height: inherit;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: inherit;
+}
+.wrapper .cover {
+  background: url("../img/bicycle.jpg") center no-repeat, #fff;
+  z-index: -15;
+}
+@media screen and (max-height: 480px) {
+  .wrapper .cover {
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+  }
+}
+@media screen and (max-width: 800px) {
+  .wrapper .cover {
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+  }
+}
+.wrapper .video {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: -20;
+}
+.wrapper .video #player {
+  height: inherit;
+  width: inherit;
+}
+.wrapper .window {
+  background-color: rgba(0,0,0,0.65);
+  background-image: url("../img/bright-squares.png");
+  z-index: -10;
+}
+.view.ng-enter,
+.view.ng-leave {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+.view.ng-enter.ng-enter-active,
+.view.ng-leave.ng-leave-active {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
 }
 @-moz-keyframes spin {
   0% {
@@ -195,39 +273,71 @@ main #welcome:hover h2 {
     transform: rotate(360deg);
   }
 }
-.wrapper {
-  overflow: hidden;
-  position: fixed;
-  width: 100vw;
-  z-index: -1;
-}
-.wrapper .cover {
-  background: url("../img/bicycle.jpg") center no-repeat, #fff;
-  height: inherit;
-  position: relative;
-  width: inherit;
-  z-index: 5;
-}
-@media screen and (max-width: 800px) {
-  .wrapper .cover {
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    background-size: contain;
+@-moz-keyframes beat {
+  0% {
+    color: currentColor;
+  }
+  40% {
+    color: currentColor;
+  }
+  65% {
+    color: #ff8c00;
+  }
+  85% {
+    color: currentColor;
+  }
+  100% {
+    color: currentColor;
   }
 }
-.wrapper .video {
-  left: 50%;
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  top: 50%;
-  width: 1280px;
-  height: 720px;
+@-webkit-keyframes beat {
+  0% {
+    color: currentColor;
+  }
+  40% {
+    color: currentColor;
+  }
+  65% {
+    color: #ff8c00;
+  }
+  85% {
+    color: currentColor;
+  }
+  100% {
+    color: currentColor;
+  }
 }
-.wrapper #player {
-  height: inherit;
-  width: inherit;
+@-o-keyframes beat {
+  0% {
+    color: currentColor;
+  }
+  40% {
+    color: currentColor;
+  }
+  65% {
+    color: #ff8c00;
+  }
+  85% {
+    color: currentColor;
+  }
+  100% {
+    color: currentColor;
+  }
+}
+@keyframes beat {
+  0% {
+    color: currentColor;
+  }
+  40% {
+    color: currentColor;
+  }
+  65% {
+    color: #ff8c00;
+  }
+  85% {
+    color: currentColor;
+  }
+  100% {
+    color: currentColor;
+  }
 }
