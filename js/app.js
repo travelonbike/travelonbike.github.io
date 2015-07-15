@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 
-var app = angular.module('bike', [
+var app = angular.module('travelonBike', [
   'ngRoute',
   'ngAnimate'
 ]).
@@ -13,13 +13,165 @@ config([
         controller: 'WelcomeController',
         templateUrl: 'welcome.html'
       }).
+      when('/blog', {
+        controller: 'BlogController',
+        templateUrl: 'blog.html'
+      }).
       when('/info', {
         controller: 'InfoController',
         templateUrl: 'info.html'
       }).
+      when('/videos', {
+        controller: 'VideosController',
+        templateUrl: 'videos.html'
+      }).
       otherwise({
         redirectTo: '/'
       });
+  }
+]).
+controller('BlogController',[
+  '$scope',
+  function($scope){
+    $scope.load = function () {
+      $(function(){
+        //Variables
+        var a = 'a',
+            activated = 'activated',
+            display = 'display',
+            elements = $('a'),
+            flex = 'flex',
+            loader = $('.loader'),
+            none = 'none',
+            slideInDown = 'slideInDown',
+            slideOutUp = 'slideOutUp',
+            ul = $('ul'),
+            self = $('#blog'),
+            //Helpers
+            activateMenu = function () {
+              if(ul.find(a).hasClass(activated)) {
+                elements.removeClass(activated);
+                self.toggleClass(activated);
+              } else {
+                self.toggleClass(activated);
+              };
+              return;
+            },
+            toggleMenu = function () {
+              if (ul.css(display) === flex && loader.css(display) === none) {
+                if(!(ul.find(a).hasClass(activated))) {
+                  ul.toggleClass(slideInDown+' '+slideOutUp);
+                }
+              }
+              else if (loader.css(display) === none) {
+                ul.css(display, flex).toggleClass(slideInDown);
+              } else {
+                ul.css(display, flex);
+              }
+            };
+        //Magic
+        toggleMenu();
+        activateMenu();
+      });
+    };
+    $scope.pageClass = 'blogPage';
+    $scope.load();
+  }
+]).
+controller('InfoController',[
+  '$scope',
+  function($scope){
+    $scope.load = function () {
+      $(function(){
+        //Variables
+        var a = 'a',
+            activated = 'activated',
+            display = 'display',
+            elements = $('a'),
+            flex = 'flex',
+            loader = $('.loader'),
+            none = 'none',
+            slideInDown = 'slideInDown',
+            slideOutUp = 'slideOutUp',
+            ul = $('ul'),
+            self = $('#info'),
+            //Helpers
+            activateMenu = function () {
+              if(ul.find(a).hasClass(activated)) {
+                elements.removeClass(activated);
+                self.toggleClass(activated);
+              } else {
+                self.toggleClass(activated);
+              };
+              return;
+            },
+            toggleMenu = function () {
+              if (ul.css(display) === flex && loader.css(display) === none) {
+                if(!(ul.find(a).hasClass(activated))) {
+                  ul.toggleClass(slideInDown+' '+slideOutUp);
+                }
+              }
+              else if (loader.css(display) === none) {
+                ul.css(display, flex).toggleClass(slideInDown);
+              } else {
+                ul.css(display, flex);
+              }
+            };
+        //Magic
+        toggleMenu();
+        activateMenu();
+      });
+    };
+    $scope.pageClass = 'infoPage';
+    $scope.load();
+  }
+]).
+controller('VideosController',[
+  '$scope',
+  function($scope){
+    $scope.load = function () {
+      $(function(){
+        //Variables
+        var a = 'a',
+            activated = 'activated',
+            display = 'display',
+            elements = $('a'),
+            flex = 'flex',
+            loader = $('.loader'),
+            none = 'none',
+            slideInDown = 'slideInDown',
+            slideOutUp = 'slideOutUp',
+            ul = $('ul'),
+            self = $('#videos'),
+            //Helpers
+            activateMenu = function () {
+              if(ul.find(a).hasClass(activated)) {
+                elements.removeClass(activated);
+                self.toggleClass(activated);
+              } else {
+                self.toggleClass(activated);
+              };
+              return;
+            },
+            toggleMenu = function () {
+              if (ul.css(display) === flex && loader.css(display) === none) {
+                if(!(ul.find(a).hasClass(activated))) {
+                  ul.toggleClass(slideInDown+' '+slideOutUp);
+                }
+              }
+              else if (loader.css(display) === none) {
+                ul.css(display, flex).toggleClass(slideInDown);
+              } else {
+                ul.css(display, flex);
+              }
+            };
+        //Magic
+        toggleMenu();
+        activateMenu();
+      });
+    };
+    $scope.pageClass = 'videosPage';
+    $scope.load();
   }
 ]).
 controller('WelcomeController',[
@@ -53,16 +205,38 @@ controller('WelcomeController',[
             $img.replaceWith($svg);
           }, 'xml');
         });
+        //Variables
+        var a = 'a',
+            activated = 'activated',
+            display = 'display',
+            elements = $('a'),
+            flex = 'flex',
+            loader = $('.loader'),
+            none = 'none',
+            slideInDown = 'slideInDown',
+            slideOutUp = 'slideOutUp',
+            ul = $('ul'),
+            //Helpers
+            deactivateMenu = function () {
+              if(ul.find(a).hasClass(activated)) {
+                elements.removeClass(activated);
+              }
+            },
+            toggleMenu = function () {
+              if (ul.css(display) === flex && ul.hasClass(slideInDown)) {
+                ul.toggleClass(slideInDown+' '+slideOutUp);
+              }
+              else if (ul.find(a).hasClass(activated)) {
+                ul.toggleClass(slideOutUp);
+              }
+            };
+        //Magic
+        toggleMenu();
+        deactivateMenu();
       });
     };
     $scope.pageClass = 'welcomePage';
     $scope.load();
-  }
-]).
-controller('InfoController',[
-  '$scope',
-  function($scope){
-    $scope.pageClass = 'infoPage';
   }
 ])
 

@@ -1,11 +1,11 @@
 * {
   -webkit-tap-highlight-color: transparent;
   -moz-tap-highlight-color: transparent;
-  -webkit-transition: opacity 300ms, color 300ms;
-  -moz-transition: opacity 300ms, color 300ms;
-  -o-transition: opacity 300ms, color 300ms;
-  -ms-transition: opacity 300ms, color 300ms;
-  transition: opacity 300ms, color 300ms;
+  -webkit-transition: opacity 300ms, color 200ms;
+  -moz-transition: opacity 300ms, color 200ms;
+  -o-transition: opacity 300ms, color 200ms;
+  -ms-transition: opacity 300ms, color 200ms;
+  transition: opacity 300ms, color 200ms;
 }
 *::selection {
   background-color: rgba(0,0,0,0.65);
@@ -41,6 +41,39 @@ main {
   overflow: hidden;
   position: relative;
   width: 100vw;
+}
+nav {
+  position: fixed;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  z-index: 95;
+}
+nav ul {
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+nav ul li a {
+  color: #f0f8ff;
+  display: block;
+  text-align: center;
+}
+nav ul li a:hover {
+  color: #ffe4b5;
+}
+nav ul li a.activated {
+  color: #ffe4b5;
+}
+nav ul li a i {
+  height: 50px;
+  line-height: 50px !important;
+  margin: 0 0.25em;
+  width: 50px;
 }
 span.highlighted {
   line-height: 1rem;
@@ -105,6 +138,7 @@ span.highlighted {
   display: -ms-flexbox;
   display: box;
   display: flex;
+  height: 100vh;
   -webkit-box-pack: center;
   -moz-box-pack: center;
   -o-box-pack: center;
@@ -139,11 +173,9 @@ span.highlighted {
 }
 .view #welcome a h2 {
   font-family: 'Pinyon Script', serif;
-  -webkit-animation: beat 3s infinite;
-  -moz-animation: beat 3s infinite;
-  -o-animation: beat 3s infinite;
-  -ms-animation: beat 3s infinite;
-  animation: beat 3s infinite;
+}
+.view #welcome a h2:hover {
+  color: #ff8c00;
 }
 .wrapper {
   overflow: hidden;

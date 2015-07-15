@@ -3,13 +3,14 @@
 delay = 300ms
 gris = rgb(213,213,213)
 gris_claro = rgb(240,240,240)
+medida = 50px //tamaño del botón de menú
 negro_transparente = rgba(0,0,0,0.65)
 verde_oscuro = rgb(177,234,177) //darkseagreen lighten
 
 *
   -webkit-tap-highlight-color transparent
   -moz-tap-highlight-color transparent
-  transition opacity delay, color delay
+  transition opacity delay, color delay - 100ms
   &::selection
     background-color negro_transparente
     color red
@@ -34,6 +35,30 @@ main
   overflow hidden
   position relative
   width 100vw
+nav
+  position fixed
+  left 50%
+  transform translate(-50%, 0)
+  z-index 95
+  ul
+    display none
+    list-style-type none
+    margin 0
+    padding 0
+    li
+      a
+        color aliceblue
+        display block
+        text-align center
+        &:hover
+          color moccasin
+        &.activated
+          color moccasin
+        i
+          height medida
+          line-height medida !important
+          margin 0 .25em
+          width medida
 span.highlighted
   line-height 1rem
 .highlighted
@@ -62,6 +87,8 @@ span.highlighted
   bottom 0
   color darkseagreen
   display flex
+  //Stupid IE
+  height 100vh
   justify-content center
   left 0
   min-height 100vh
@@ -85,7 +112,9 @@ span.highlighted
       text-decoration none
       h2
         font-family 'Pinyon Script', serif
-        animation beat 3s infinite
+        //animation beat 3s infinite
+        &:hover
+          color darkorange
 .wrapper
   overflow hidden
   position fixed
