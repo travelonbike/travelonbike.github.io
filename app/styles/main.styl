@@ -1,12 +1,13 @@
 @import 'nib'
-
+//Variables
+blanco_transparente = rgba(255,255,255,0.85)
 delay = 300ms
 gris = rgb(213,213,213)
 gris_claro = rgb(240,240,240)
 medida = 50px //tamaño del botón de menú
 negro_transparente = rgba(0,0,0,0.65)
 verde_oscuro = rgb(177,234,177) //darkseagreen lighten
-
+//Magic begins.
 *
   -webkit-tap-highlight-color transparent
   -moz-tap-highlight-color transparent
@@ -18,7 +19,6 @@ body, html, .wrapper
   font-family Dosis, sans-serif
   font-size 16px
   height 100vh
-  margin 0
   padding 0
 h1
   font-size 4rem
@@ -95,11 +95,6 @@ span.highlighted
   right 0
   text-align center
   top 0
-  #info
-    h2
-      line-height 1em
-      span.logoText
-        text-shadow 0 1px 0 rgba(255,255,250,0.4)
   #welcome
     max-width 100%
     figure
@@ -111,10 +106,44 @@ span.highlighted
       color darkseagreen
       text-decoration none
       h2
-        font-family 'Pinyon Script', serif
         //animation beat 3s infinite
+        font-family 'Pinyon Script', serif
         &:hover
           color darkorange
+  &.infoPage
+    display block
+    overflow auto
+    h2
+      line-height 1em
+      span.logoText
+        text-shadow 0 1px 0 rgba(255,255,250,0.4)
+    .infoSection
+      align-items center
+      display flex
+      //Really stupid IE
+      height 100vh
+      justify-content center
+      min-height 100vh
+      position relative
+      .container
+        .goDown
+          animation beatButton 1.5s ease-in-out .3s infinite
+          bottom 0
+          color aliceblue
+          left 50%
+          position absolute
+          transform translate(-50%, 0)
+      &#hardware
+        h2,p
+          text-align left
+        h2
+          font-size 1.5rem
+        p
+          font-size 1rem
+        .container
+          background blanco_transparente
+          border-radius .5em
+          padding 1em 3em
 .wrapper
   overflow hidden
   position fixed
@@ -145,7 +174,6 @@ span.highlighted
     background-color negro_transparente
     background-image url(../img/bright-squares.png)
     z-index -10
-
 //Animations
 @keyframes spin
   0%
@@ -163,7 +191,13 @@ span.highlighted
     color currentColor
   100%
     color currentColor
-
+@keyframes beatButton
+  0%
+    color aliceblue
+  50%
+    color moccasin
+  100%
+    color aliceblue
 //ngAnimate classes
 .view.ng-enter,
 .view.ng-leave

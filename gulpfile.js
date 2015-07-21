@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
     connect = require('gulp-connect'),
-    historyApiFallback = require('connect-history-api-fallback'),
+    copy = require('gulp-copy'),
     stylus = require('gulp-stylus'),
     nib = require('nib'),
     jade = require('gulp-jade');
@@ -14,25 +14,32 @@ gulp.task('server', function(){
   });
 });
 
+gulp.task('js', function() {
+  gulp.src('./app/js/*.js')
+    .pipe(gulp.dest('./dist/js/'))
+    .pipe(connect.reload())
+});
+
 gulp.task('css', function(){
-  gulp.src('./app/styles/main.styl')
-    .pipe(stylus({ use: nib() }))
-    .pipe(gulp.dest('./dist/css'))
+  gulp.src('./app/styles/*.styl')
+    .pipe(stylus({ use: nib(), compress:true }))
+    .pipe(gulp.dest('./dist/css/'))
     .pipe(connect.reload());
 });
 
 gulp.task('html', function(){
-  gulp.src('./app/**/*.jade')
+  gulp.src('./app/*.jade')
     .pipe(jade({
       pretty: false
     }))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./dist/'))
     .pipe(connect.reload());
 });
 
 gulp.task('watch', function(){
-  gulp.watch(['./app/**/*.jade'], ['html']);
-  gulp.watch(['./app/styles/**/*.styl'], ['css']);
+  gulp.watch(['./app/*.jade'], ['html']);
+  gulp.watch(['./app/styles/*.styl'], ['css']);
+  gulp.watch(['./app/js/*.js'], ['js']);
 });
 
 gulp.task('default', ['server', 'watch']);
