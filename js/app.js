@@ -33,171 +33,19 @@ config([
 controller('BlogController',[
   '$scope',
   function($scope){
-    $scope.load = function () {
-      $(function(){
-        //Variables
-        var a = 'a',
-            activated = 'activated',
-            display = 'display',
-            elements = $('a'),
-            flex = 'flex',
-            loader = $('.loader'),
-            none = 'none',
-            slideInDown = 'slideInDown',
-            slideOutUp = 'slideOutUp',
-            ul = $('ul'),
-            self = $('#blog'),
-            //Helpers
-            activateMenu = function () {
-              if(ul.find(a).hasClass(activated)) {
-                elements.removeClass(activated);
-                self.toggleClass(activated);
-              } else {
-                self.toggleClass(activated);
-              };
-              return;
-            },
-            toggleMenu = function () {
-              if (ul.css(display) === flex && loader.css(display) === none) {
-                if(!(ul.find(a).hasClass(activated))) {
-                  ul.toggleClass(slideInDown+' '+slideOutUp);
-                }
-              }
-              else if (loader.css(display) === none) {
-                ul.css(display, flex).toggleClass(slideInDown);
-              } else {
-                ul.css(display, flex);
-              }
-            };
-        //Magic
-        toggleMenu();
-        activateMenu();
-      });
-    };
     $scope.pageClass = 'blogPage';
-    $scope.load();
   }
 ]).
 controller('InfoController',[
   '$scope',
   function($scope){
-    $scope.load = function () {
-      $(function(){
-        //Variables
-        var a = 'a',
-            activated = 'activated',
-            display = 'display',
-            elements = $('a'),
-            flex = 'flex',
-            goDown = $('.goDown'),
-            loader = $('.loader'),
-            none = 'none',
-            slideInDown = 'slideInDown',
-            slideOutUp = 'slideOutUp',
-            ul = $('ul'),
-            self = $('#info'),
-            view = $('.view'),
-            //Helpers
-            activateMenu = function () {
-              if(ul.find(a).hasClass(activated)) {
-                elements.removeClass(activated);
-                self.toggleClass(activated);
-              } else {
-                self.toggleClass(activated);
-              };
-              return;
-            },
-            toggleMenu = function () {
-              if (ul.css(display) === flex && loader.css(display) === none) {
-                if(!(ul.find(a).hasClass(activated))) {
-                  ul.toggleClass(slideInDown+' '+slideOutUp);
-                }
-              }
-              else if (loader.css(display) === none) {
-                ul.css(display, flex).toggleClass(slideInDown);
-              } else {
-                ul.css(display, flex);
-              }
-            };
-        //Magic
-        toggleMenu();
-        activateMenu();
-        //view.scroll(function () {
-          //var scrollTop = view.scrollTop(),
-              //height = view.height(),
-              //distance = (height - scrollTop) / height;
-          //if (height == 0) {
-              //scrollTop = view.scrollTop(),
-              //height = view.height(),
-              //distance = (height - scrollTop) / height;
-          //};
-          //if (distance >= .98) {
-            //goDown.css({
-              //'opacity': 1,
-              //'animation': 'beatButton 1.5s ease-in-out .3s infinite'
-            //});
-          //} else {
-            //goDown.css({
-              //'animation': 'none',
-              //'opacity': distance - .25
-            //});
-          //};
-          //console.log('distance = '+distance);
-          //console.log('height = '+height);
-          //console.log('scrollTop = '+scrollTop);
-        //});
-      });
-    };
     $scope.pageClass = 'infoPage';
-    $scope.load();
   }
 ]).
 controller('VideosController',[
   '$scope',
   function($scope){
-    $scope.load = function () {
-      $(function(){
-        //Variables
-        var a = 'a',
-            activated = 'activated',
-            display = 'display',
-            elements = $('a'),
-            flex = 'flex',
-            loader = $('.loader'),
-            none = 'none',
-            slideInDown = 'slideInDown',
-            slideOutUp = 'slideOutUp',
-            ul = $('ul'),
-            self = $('#videos'),
-            //Helpers
-            activateMenu = function () {
-              if(ul.find(a).hasClass(activated)) {
-                elements.removeClass(activated);
-                self.toggleClass(activated);
-              } else {
-                self.toggleClass(activated);
-              };
-              return;
-            },
-            toggleMenu = function () {
-              if (ul.css(display) === flex && loader.css(display) === none) {
-                if(!(ul.find(a).hasClass(activated))) {
-                  ul.toggleClass(slideInDown+' '+slideOutUp);
-                }
-              }
-              else if (loader.css(display) === none) {
-                ul.css(display, flex).toggleClass(slideInDown);
-              } else {
-                ul.css(display, flex);
-              }
-            };
-        //Magic
-        toggleMenu();
-        activateMenu();
-      });
-    };
     $scope.pageClass = 'videosPage';
-    $scope.load();
   }
 ]).
 controller('WelcomeController',[

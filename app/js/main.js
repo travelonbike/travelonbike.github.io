@@ -21,8 +21,9 @@ function onYouTubePlayerAPIReady() {
       'showinfo': 0,
       //'playlist': 'BZP1rYjoBgI'},
     //videoId: 'BZP1rYjoBgI',
-      'playlist': 'ZvrjQOHJIAA'},
-    videoId: 'ZvrjQOHJIAA',
+      //'playlist': 'ZvrjQOHJIAA'},
+    //videoId: 'ZvrjQOHJIAA',
+    },
     width: '100%'
  });
 };
