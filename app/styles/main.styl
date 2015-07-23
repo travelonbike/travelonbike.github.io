@@ -39,24 +39,33 @@ nav
   transform translate(-50%, 0)
   z-index 95
   ul
-    display none
     list-style-type none
     margin 0
     padding 0
     li
+      display inline-block
       a
         color aliceblue
         display block
         text-align center
         &:hover
           color moccasin
-        &.activated
-          color moccasin
         i
           height medida
           line-height medida !important
           margin 0 .25em
           width medida
+.blogNav
+  #blog
+    color moccasin
+.infoNav
+  #info
+    color moccasin
+.videosNav
+  #videos
+    color moccasin
+.welcomeNav
+  display none
 span.highlighted
   line-height 1rem
 span.logoText
@@ -109,7 +118,6 @@ span.logoText
       color darkseagreen
       text-decoration none
       h2
-        //animation beat 3s infinite
         font-family 'Pinyon Script', serif
         &:hover
           color darkorange
