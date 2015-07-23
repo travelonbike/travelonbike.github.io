@@ -13,50 +13,32 @@ config([
         controller: 'WelcomeController',
         templateUrl: 'welcome.html'
       }).
-      when('/blog', {
-        controller: 'BlogController',
-        templateUrl: 'blog.html'
-      }).
-      when('/info', {
-        controller: 'InfoController',
-        templateUrl: 'info.html'
-      }).
-      when('/videos', {
-        controller: 'VideosController',
-        templateUrl: 'videos.html'
+      when('/:section', {
+        controller: 'SectionController',
+        templateUrl: function (params) {
+          return params.section+'.html';
+        }
       }).
       otherwise({
         redirectTo: '/'
       });
   }
 ]).
-controller('BlogController',['$scope','$rootScope','sharedProperties',function($scope,$rootScope, sharedProperties){
-  $scope.pageClass = 'blogPage';
-  if(sharedProperties.getProperties()){
-    $rootScope.pageClassRoot = 'animated fadeInDown blogNav';
-    sharedProperties.setProperties(false);
-  } else {
-    $rootScope.pageClassRoot = 'blogNav';
+controller('SectionController',[
+  '$scope',
+  '$rootScope',
+  '$routeParams',
+  'sharedProperties',
+  function($scope,$rootScope, $routeParams,sharedProperties){
+    $scope.pageClass = $routeParams.section+'Page';
+    if(sharedProperties.getProperties()){
+      $rootScope.pageClassRoot = 'animated fadeInDown '+$routeParams.section+'Nav';
+      sharedProperties.setProperties(false);
+    } else {
+      $rootScope.pageClassRoot = $routeParams.section+'Nav';
+    }
   }
-}]).
-controller('InfoController',['$scope','$rootScope','sharedProperties',function($scope,$rootScope, sharedProperties){
-  $scope.pageClass = 'infoPage';
-  if(sharedProperties.getProperties()){
-    $rootScope.pageClassRoot = 'animated fadeInDown infoNav';
-    sharedProperties.setProperties(false);
-  } else {
-    $rootScope.pageClassRoot = 'infoNav';
-  }
-}]).
-controller('VideosController',['$scope','$rootScope','sharedProperties',function($scope,$rootScope, sharedProperties){
-  $scope.pageClass = 'videosPage';
-  if(sharedProperties.getProperties()){
-    $rootScope.pageClassRoot = 'animated fadeInDown videosNav';
-    sharedProperties.setProperties(false);
-  } else {
-    $rootScope.pageClassRoot = 'videosNav';
-  }
-}]).
+]).
 controller('WelcomeController',['$scope','$rootScope','sharedProperties',function($scope,$rootScope,sharedProperties){
   $scope.load = function () {
     $(function(){
