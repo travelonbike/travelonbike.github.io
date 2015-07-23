@@ -31,9 +31,9 @@ controller('SectionController',[
   'sharedProperties',
   function($scope,$rootScope, $routeParams,sharedProperties){
     $scope.pageClass = $routeParams.section+'Page';
-    if(sharedProperties.getProperties('menu')){
+    if(sharedProperties.getProperty('menu')){
       $rootScope.pageClassRoot = 'animated fadeInDown '+$routeParams.section+'Nav';
-      sharedProperties.setProperties('menu',false);
+      sharedProperties.setProperty('menu',false);
     } else {
       $rootScope.pageClassRoot = $routeParams.section+'Nav';
     }
@@ -99,9 +99,9 @@ controller('WelcomeController',['$scope','$rootScope','sharedProperties',functio
     });
   };
   $scope.pageClass = 'welcomePage';
-  if(!(sharedProperties.getProperties('menu'))){
+  if(!(sharedProperties.getProperty('menu'))){
     $rootScope.pageClassRoot = 'animated fadeOutUp'
-    sharedProperties.setProperties('menu',true);
+    sharedProperties.setProperty('menu',true);
   } else {
     $rootScope.pageClassRoot = 'welcomeNav'
   }
@@ -112,10 +112,10 @@ service('sharedProperties', function(){
     'menu': true
   };
   return {
-    getProperties: function (key) {
+    getProperty: function (key) {
       return properties[key];
     },
-    setProperties: function (key, value) {
+    setProperty: function (key, value) {
       properties[key] = value;
     }
   };

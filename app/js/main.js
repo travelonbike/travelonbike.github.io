@@ -46,7 +46,7 @@ function onPlayerStateChange(event) {
 $(function(){
 
 //Self explaining variables. Duh!
-var keepRatio = 1.7777777777, //16:9 ratio
+var keepRatio = 1920/1080, //16:9 ratio
     video = $('.video'),
     wrapper = $('.wrapper');
 
