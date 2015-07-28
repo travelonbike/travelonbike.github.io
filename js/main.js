@@ -18,7 +18,7 @@ function onYouTubePlayerAPIReady() {
       'controls': 0,
       'loop': 0,
       'rel': 0,
-      'showinfo': 0}
+      'showinfo': 0},
     videoId: 'm_Sb3IwqakY',
     //},
     width: '100%'
