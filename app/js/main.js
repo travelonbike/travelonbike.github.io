@@ -16,7 +16,7 @@ function onYouTubePlayerAPIReady() {
     playerVars: {
       'autoplay': 1,
       'controls': 0,
-      'loop': 1,
+      'loop': 0,
       'rel': 0,
       'showinfo': 0,
       'playlist': 'm_Sb3IwqakY'},
