@@ -31,9 +31,9 @@ controller('SectionController',[
   'sharedProperties',
   function($scope,$rootScope, $routeParams,sharedProperties){
     $scope.pageClass = $routeParams.section+'Page';
-    if(sharedProperties.getProperties()){
+    if(sharedProperties.getProperty('menu')){
       $rootScope.pageClassRoot = 'animated fadeInDown '+$routeParams.section+'Nav';
-      sharedProperties.setProperties(false);
+      sharedProperties.setProperty('menu',false);
     } else {
       $rootScope.pageClassRoot = $routeParams.section+'Nav';
     }
@@ -99,9 +99,9 @@ controller('WelcomeController',['$scope','$rootScope','sharedProperties',functio
     });
   };
   $scope.pageClass = 'welcomePage';
-  if(!(sharedProperties.getProperties())){
+  if(!(sharedProperties.getProperty('menu'))){
     $rootScope.pageClassRoot = 'animated fadeOutUp'
-    sharedProperties.setProperties(true);
+    sharedProperties.setProperty('menu',true);
   } else {
     $rootScope.pageClassRoot = 'welcomeNav'
   }
@@ -109,14 +109,14 @@ controller('WelcomeController',['$scope','$rootScope','sharedProperties',functio
 }]).
 service('sharedProperties', function(){
   var properties = {
-    menu: true
+    'menu': true
   };
   return {
-    getProperties: function () {
-      return properties.menu;
+    getProperty: function (key) {
+      return properties[key];
     },
-    setProperties: function (value) {
-      properties.menu = value;
+    setProperty: function (key, value) {
+      properties[key] = value;
     }
   };
 });

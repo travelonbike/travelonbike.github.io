@@ -27,5 +27,8 @@
     "gulp-stylus": "^2.0.5",
     "gulp-util": "^3.0.6",
     "nib": "^1.1.0"
+  },
+  "dependencies": {
+    "gulp-clean": "^0.3.1"
   }
 }

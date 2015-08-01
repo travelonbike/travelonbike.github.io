@@ -20,7 +20,10 @@ function onYouTubePlayerAPIReady() {
       'rel': 0,
       'showinfo': 0},
     videoId: 'm_Sb3IwqakY',
+<<<<<<< HEAD
     //},
+=======
+>>>>>>> feature
     width: '100%'
  });
 };
@@ -43,7 +46,7 @@ function onPlayerStateChange(event) {
 $(function(){
 
 //Self explaining variables. Duh!
-var keepRatio = 1.7777777777, //16:9 ratio
+var keepRatio = 1920/1080, //16:9 ratio
     video = $('.video'),
     wrapper = $('.wrapper');
 

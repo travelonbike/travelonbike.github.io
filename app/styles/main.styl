@@ -5,8 +5,10 @@ delay = 300ms
 gris = rgb(213,213,213)
 gris_claro = rgb(240,240,240)
 medida = 50px //tamaño del botón de menú
-negro_transparente = rgba(0,0,0,0.65)
-verde_oscuro = rgb(177,234,177) //darkseagreen lighten
+negro_transparente = rgba(0,0,0,0.15)
+secondColor = orange
+texto = white
+loaderSize = 64px
 //Magic begins.
 *
   -webkit-tap-highlight-color transparent
@@ -15,7 +17,11 @@ verde_oscuro = rgb(177,234,177) //darkseagreen lighten
   &::selection
     background-color negro_transparente
     color red
+a
+  color texto
+  text-decoration none
 body, html, .wrapper
+  color texto
   font-family Dosis, sans-serif
   font-size 16px
   height 100vh
@@ -23,9 +29,18 @@ body, html, .wrapper
 h1
   font-size 4rem
 h1,h2
-  margin 0
+  margin .5em 0
 h2
   font-size 3rem
+  text-shadow:
+  0 7px 7px rgba(0.0.0.0.7)
+hr
+  background-image linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,0.75),rgba(255,255,255,0))
+  border 0
+  height .125em
+  margin-bottom 1em
+  margin-top 1em
+  width 80%
 p
   font-size 1.75rem
 main
@@ -70,16 +85,18 @@ span.highlighted
   line-height 1rem
 span.logoText
   text-shadow:
-    0 5px 5px rgba(255,255,250,0.5),
-    0 3px 3px rgba(255,255,250,0.7),
-    0 1px 1px rgba(255,255,250,0.9)
+    0 11px 2px rgba(0,0,0,0.1),
+    0 9px 2px rgba(0,0,0,0.3),
+    0 5px 2px rgba(0,0,0,0.5),
+    0 3px 2px rgba(0,0,0,0.7),
+    0 1px 2px rgba(0,0,0,0.9)
 .highlighted
-  color darkorange
+  color secondColor
   font-size 1.75em
   text-shadow none
 .loader
   align-items center
-  background white
+  background black
   bottom 0
   display flex
   justify-content center
@@ -92,12 +109,11 @@ span.logoText
     animation spin 2s infinite ease-in-out
     background url(../img/crank.png) center no-repeat
     background-size cover
-    height 128px
-    width 128px
+    height loaderSize
+    width loaderSize
 .view
   align-items center
   bottom 0
-  color darkseagreen
   display flex
   //Stupid IE
   height 100vh
@@ -110,17 +126,19 @@ span.logoText
   #welcome
     max-width 100%
     figure
-      color darkorange
-      margin 0
       svg
-        fill currentColor
+        background secondColor
+        border-radius 50%
+        color secondColor
+        margin 0
+        fill texto
+        padding .5em
     a
-      color darkseagreen
-      text-decoration none
       h2
         font-family 'Pinyon Script', serif
-        &:hover
-          color darkorange
+      &:hover
+        h2
+          color secondColor
   &.infoPage
     display block
     overflow auto
@@ -165,12 +183,9 @@ span.logoText
     top 0
     width inherit
   .cover
-    background url(../img/bicycle.jpg) center no-repeat, white
+    background url(../img/background.jpg) center no-repeat
+    background-size cover
     z-index -15
-    @media screen and (max-height: 480px)
-      background-size contain
-    @media screen and (max-width: 800px)
-      background-size contain
   .video
     left 50%
     top 50%
@@ -181,7 +196,7 @@ span.logoText
       width inherit
   .window
     background-color negro_transparente
-    background-image url(../img/bright-squares.png)
+    background-image url(../img/grid.png)
     z-index -10
 //Animations
 @keyframes spin
@@ -195,7 +210,7 @@ span.logoText
   40%
     color currentColor
   65%
-    color darkorange
+    color secondColor
   85%
     color currentColor
   100%
