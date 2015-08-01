@@ -9,6 +9,7 @@ negro_transparente = rgba(0,0,0,0.15)
 secondColor = orange
 texto = white
 loaderSize = 64px
+menuSelected = white
 //Magic begins.
 *
   -webkit-tap-highlight-color transparent
@@ -51,9 +52,12 @@ main
 nav
   position fixed
   left 50%
+  text-align center
   transform translate(-50%, 0)
+  width 100vw
   z-index 95
   ul
+    background rgba(255,166,0,0.5)
     list-style-type none
     margin 0
     padding 0
@@ -64,7 +68,7 @@ nav
         display block
         text-align center
         &:hover
-          color moccasin
+          text-shadow 0 2px 4px rgba(0,0,0,0.5)
         i
           height medida
           line-height medida !important
@@ -72,13 +76,16 @@ nav
           width medida
 .blogNav
   #blog
-    color moccasin
+    color menuSelected
+    text-shadow 0 2px 4px rgba(0,0,0,0.5)
 .infoNav
   #info
-    color moccasin
+    color menuSelected
+    text-shadow 0 2px 4px rgba(0,0,0,0.5)
 .videosNav
   #videos
-    color moccasin
+    color menuSelected
+    text-shadow 0 2px 4px rgba(0,0,0,0.5)
 .welcomeNav
   display none
 span.highlighted
