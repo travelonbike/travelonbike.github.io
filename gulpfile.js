@@ -7,12 +7,12 @@ var gulp = require('gulp'),
     jade = require('gulp-jade');
 //Gulp Tasks config
 gulp.task('clean-assets', function(){
-  gulp.src('./dist/img', {read:false})
+  gulp.src('./img/*', {read:false})
     .pipe(clean());
 });
 gulp.task('copy-assets', function() {
-  gulp.src('./assets/')
-    .pipe(gulp.dest('./dist/img/'))
+  gulp.src('./assets/**/*')
+    .pipe(gulp.dest('./img/'))
     .pipe(connect.reload());
 });
 gulp.task('css', function(){
@@ -46,7 +46,9 @@ gulp.task('watch', function(){
   gulp.watch(['./app/*.jade'], ['html']);
   gulp.watch(['./app/styles/*.styl'], ['css']);
   gulp.watch(['./app/js/*.js'], ['js']);
+  gulp.watch(['./assets/**/*'], ['assets']);
 });
 //Gulp tasks exec
-gulp.task('assets', ['clean-assets', 'copy-assets']);
-gulp.task('default', ['server', 'watch']);
+gulp.task('assets', ['clean-assets','copy-assets']);
+gulp.task('default', ['server','init','watch']);
+gulp.task('init', ['assets','css','js','html']);

@@ -18,12 +18,8 @@ function onYouTubePlayerAPIReady() {
       'controls': 0,
       'loop': 1,
       'rel': 0,
-      'showinfo': 0,
-      //'playlist': 'BZP1rYjoBgI'},
-    //videoId: 'BZP1rYjoBgI',
-      //'playlist': 'ZvrjQOHJIAA'},
-    //videoId: 'ZvrjQOHJIAA',
-    },
+      'showinfo': 0},
+    videoId: 'm_Sb3IwqakY',
     width: '100%'
  });
 };
